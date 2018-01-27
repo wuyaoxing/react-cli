@@ -1,3 +1,3 @@
-# sws_wx_mp
+# react-cli
 
-> sws_wx_mp
+> react-cli
