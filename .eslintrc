@@ -1,9 +1,0 @@
-{
-    "extends": "react-app",
-    "rules": {
-        "eqeqeq": ["error", "always"],
-        "indent": [2, 4, { "SwitchCase": 1 }],
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-        "semi": ["error", "never"]
-    }
-}
