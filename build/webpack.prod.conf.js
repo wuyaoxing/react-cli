@@ -46,7 +46,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: utils.assetsPath('css/[name].[contenthash].css'),
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
       // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
+      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
       // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
       allChunks: true,
     }),
@@ -107,6 +107,27 @@ const webpackConfig = merge(baseWebpackConfig, {
       children: true,
       minChunks: 3
     }),
+
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en_US|zh_cn/),
+
+    // Switch context for Moment.js locales.
+    // new webpack.ContextReplacementPlugin(/^\.\/locale$/, context => {
+    //     // Don't touch anything else then "moment".
+    //     if (!/\/moment\//.test(context.context)) {
+    //         return;
+    //     }
+    //     // Working with "moment/src/moment" instead of "moment" requires
+    //     // redirecting "./locale" back to "../../locale".
+    //     Object.assign(context, {
+    //         // Want all locales, enable this line.
+    //         // regExp: /^\.\/\w+/,
+    //         // Just use some locales, enable this line.
+    //         regExp: /de|fr|hu/,
+    //         // Don't use any locales except default "en".
+    //         // regExp: undefined,
+    //         request: "../../locale",
+    //     });
+    // }),
 
     // copy custom static assets
     new CopyWebpackPlugin([

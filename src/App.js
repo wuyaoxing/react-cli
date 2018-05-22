@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { LocaleProvider } from 'antd'
 
 import zhCN from 'antd/lib/locale-provider/zh_CN'
+import 'moment/locale/zh-cn'
 
 import Antd from 'components/antd'
 
