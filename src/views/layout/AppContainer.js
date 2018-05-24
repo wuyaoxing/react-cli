@@ -1,15 +1,17 @@
 import './AppContainer.less'
 
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Icon } from 'antd'
+
+import AppSider from './AppSider'
 
 import { navRoutes } from 'router/routes'
 
-const { Header, Sider, Content } = Layout
+import Antd from 'components/antd'
 
-import * as Antd from 'components/antd'
+const { Header, Content } = Layout
 
 export default class AppContainer extends React.Component {
     state = {
@@ -21,31 +23,10 @@ export default class AppContainer extends React.Component {
         })
     }
 
-    renderNavLink = nav => (<Link to={nav.path}>{nav.name}</Link>)
-
     render() {
         return (
             <Layout className="app-layout">
-                <Sider
-                    trigger={null}
-                    collapsible
-                    collapsed={this.state.collapsed}
-                >
-                    <div className="logo">
-                        <Link to="/">logo</Link>
-                    </div>
-                    <Menu
-                        theme="dark"
-                        mode="inline"
-                    >
-                        {navRoutes.map(item => (
-                            <Menu.Item key={item.field}>
-                                {/* <span>{item.name}</span> */}
-                                {this.renderNavLink(item)}
-                            </Menu.Item>
-                        ))}
-                    </Menu>
-                </Sider>
+                <AppSider collapsed={this.state.collapsed} />
                 <Layout>
                     <Header style={{ background: '#fff', padding: 0 }}>
                         <Icon
@@ -66,10 +47,14 @@ export default class AppContainer extends React.Component {
                             minHeight: 280
                         }}
                     >
-                        <Route exact path="/" component={Antd.Antd} />
-                        <Route path="/button" component={Antd.ButtonComponent} />
-                        <Route path="/checkout" component={Antd.CheckoutComponent} />
-                        <Route path="/input" component={Antd.InputComponent} />
+                        <Route exact path="/" component={Antd} />
+                        {navRoutes.map(item => (
+                            <Route
+                                path={item.path}
+                                component={item.component}
+                                key={item.field}
+                            />
+                        ))}
                     </Content>
                 </Layout>
             </Layout>

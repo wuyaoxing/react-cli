@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button, notification, DatePicker, Checkbox, Input } from 'antd'
+import { Button, notification, DatePicker } from 'antd'
 
 const { RangePicker } = DatePicker
 
-class Antd extends React.Component {
+export default class Antd extends React.Component {
     openNotification () {
         notification.success({
             message: 'Button Click',
@@ -22,29 +22,4 @@ class Antd extends React.Component {
             </div>
         )
     }
-}
-
-export const ButtonComponent = () => (
-    <div>
-        <Button type="primary">Primary</Button>
-        <Button>Default</Button>
-        <Button type="dashed">Dashed</Button>
-        <Button type="danger">Danger</Button>
-    </div>
-)
-
-export const CheckoutComponent = () => (
-    <div>
-        <Checkbox>Checkbox</Checkbox>
-    </div>
-)
-
-export const InputComponent = () => (
-    <div>
-        <Input placeholder="Basic usage" />
-    </div>
-)
-
-export {
-    Antd
 }
